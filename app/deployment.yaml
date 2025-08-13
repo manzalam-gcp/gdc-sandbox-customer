@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-server-test
+  template:
+    metadata:
+      labels:
+        app: web-server-test
+    spec:
+      containers:
+      - name: web-server-test-container
+        image: user-haas-instance-user-project.org-1.zone1.google.gdch.test/tack-1/web-server-test:latest
+        imagePullPolicy: Always 
+        ports:
+          - containerPort: 80
+      imagePullSecrets:
+      - name: abc-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-server-test-service
+spec:
+  type: LoadBalancer 
+  selector:
+    app: web-server-test
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+
