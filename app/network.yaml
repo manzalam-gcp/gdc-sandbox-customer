@@ -1,8 +1,13 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
+apiVersion: networking.gdc.goog/v1
+kind: ProjectNetworkPolicy
 metadata:
-  name: allow-all
+  namespace: tack-1
+  name: allow-external-traffic
 spec:
-  podSelector: {}
-  policyTypes:
-  - Ingress
+  policyType: Ingress
+  subject:
+    subjectType: UserWorkload
+  ingress:
+   - from:
+     - ipBlock:
+         cidr: 0.0.0.0/0
