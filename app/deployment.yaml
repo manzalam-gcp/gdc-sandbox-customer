@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web-server-test-container
-        image: user-haas-instance-user-project.org-1.zone1.google.gdch.test/tack-1/web-server-test:latest
+        image: $HARBOR_URL/$HARBOR_PROJECT/web-server-test:latest
         imagePullPolicy: Always 
         ports:
           - containerPort: 80
