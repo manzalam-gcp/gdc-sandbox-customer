@@ -20,3 +20,11 @@ if [ "$1" == "app" ]; then
     apply app/deployment.yaml
     apply app/network.yaml
 fi
+
+if [ "$1" == "open" ]; then
+    apply open-web-ui/ollama-service.yaml
+    apply open-web-ui/ollama-statefulset.yaml
+    apply open-web-ui/deployment.yaml
+    apply open-web-ui/webui-pvc.yaml
+    apply open-web-ui/webui-service.yaml
+fi

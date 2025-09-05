@@ -4,6 +4,21 @@
 
 ```bash
 
+export IMAGE_NAME_PULL="ghcr.io/open-webui/open-webui:main"
+export IMAGE_NAME="open-webui"
+export IMAGE_VERSION="main"
+
+docker pull $IMAGE_NAME_PULL
+docker tag $IMAGE_NAME_PULL $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:$IMAGE_VERSION
+docker push $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:$IMAGE_VERSION
+
+export IMAGE_NAME_PULL="ollama/ollama:latest"
+export IMAGE_NAME="ollama"
+export IMAGE_VERSION="latest"
+
+docker pull $IMAGE_NAME_PULL
+docker tag $IMAGE_NAME_PULL $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:$IMAGE_VERSION
+docker push $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:$IMAGE_VERSION
 
 ```
 
@@ -13,10 +28,11 @@
 ```bash
 
 export IMAGE_NAME="open-webui"
-export IMAGE_VERSION="main"
+export IMAGE_NAME_PULL="ghcr.io/open-webui/open-webui:main"
 
-docker run -d -p 8000:80 $IMAGE_NAME:$IMAGE_VERSION
+docker pull $IMAGE_NAME_PULL
 
+docker run -d -p 3000:8080 -v $IMAGE_NAME:/app/backend/data --name $IMAGE_NAME $IMAGE_NAME_PULL
 
 ```
 

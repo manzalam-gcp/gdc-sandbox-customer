@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ollama
+  namespace: open-webui
+spec:
+  serviceName: "ollama"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      imagePullSecrets:
+      - name: ${HARBOR_SECRET}
+      containers:
+      - name: ollama
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/ollama:latest
+        ports:
+        - containerPort: 11434
+        resources:
+          requests:
+            cpu: "2000m"
+            memory: "2Gi"
+          limits:
+            cpu: "4000m"
+            memory: "4Gi"
+            nvidia.com/gpu: "0"
+        volumeMounts:
+        - name: ollama-volume
+          mountPath: /root/.ollama
+        tty: true
+  volumeClaimTemplates:
+  - metadata:
+      name: ollama-volume
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 30Gi
