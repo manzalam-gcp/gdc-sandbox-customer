@@ -22,9 +22,9 @@ if [ "$1" == "app" ]; then
 fi
 
 if [ "$1" == "open" ]; then
-    apply open-web-ui/ollama-service.yaml
-    apply open-web-ui/ollama-statefulset.yaml
-    apply open-web-ui/deployment.yaml
-    apply open-web-ui/webui-pvc.yaml
-    apply open-web-ui/webui-service.yaml
+    apply open-web-ui/base/ollama-service.yaml
+    apply open-web-ui/base/ollama-statefulset.yaml
+    apply open-web-ui/base/deployment.yaml
+    apply open-web-ui/base/webui-pvc.yaml
+    apply open-web-ui/base/webui-service.yaml
 fi
