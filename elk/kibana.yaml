@@ -31,7 +31,7 @@ spec:
         ports:
         - containerPort: 5601
       imagePullSecrets:
-      - name: abc-secret
+      - name: ${HARBOR_SECRET}
 ---
 apiVersion: v1
 kind: Service

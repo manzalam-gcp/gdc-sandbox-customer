@@ -19,7 +19,7 @@ spec:
         ports:
           - containerPort: 80
       imagePullSecrets:
-      - name: abc-secret
+      - name: ${HARBOR_SECRET}
 ---
 apiVersion: v1
 kind: Service

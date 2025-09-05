@@ -2,7 +2,9 @@
 source .env
 
 
-kubectl create secret docker-registry ${SECRET} --from-file=.dockerconfigjson=.docker/config.json -n ${NAMESPACE}
+kubectl create secret docker-registry ${HARBOR_SECRET} --from-file=.dockerconfigjson=$HOME/.docker/config.json -n ${NAMESPACE}
+
+ku create secret docker-registry ${HARBOR_SECRET} --from-file=.dockerconfigjson=$HOME/.docker/config.json
 
 docker tag nginx ${HARBOR_URL}/${HARBOR_PROJECT}/nginx:1.25
 
