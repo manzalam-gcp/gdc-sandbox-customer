@@ -4,7 +4,7 @@ help: ## Show this help.
 
 login: ## Login
 	@echo "Login"
-	source ./login.sh
+	./login.sh
 
 elk:
 	./deploy.sh elk
