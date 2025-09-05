@@ -24,7 +24,7 @@ fi
 if [ "$1" == "open" ]; then
     apply open-web-ui/base/ollama-service.yaml
     apply open-web-ui/base/ollama-statefulset.yaml
-    apply open-web-ui/base/deployment.yaml
+    apply open-web-ui/base/webui-deployment.yaml
     apply open-web-ui/base/webui-pvc.yaml
     apply open-web-ui/base/webui-service.yaml
 fi
