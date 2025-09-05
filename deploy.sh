@@ -15,3 +15,8 @@ if [ "$1" == "elk" ]; then
     apply elk/headless-service.yaml
     apply elk/kibana.yaml
 fi
+
+if [ "$1" == "app" ]; then
+    apply app/deployment.yaml
+    apply app/network.yaml
+fi

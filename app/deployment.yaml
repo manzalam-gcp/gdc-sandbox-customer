@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web-server-test-container
-        image: $HARBOR_URL/$HARBOR_PROJECT/web-server-test:latest
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/web-server-test:latest
         imagePullPolicy: Always 
         ports:
           - containerPort: 80

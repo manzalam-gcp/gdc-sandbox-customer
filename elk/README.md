@@ -1,3 +1,8 @@
+# ELK
+
+## Setup
+
+```bash
 
 export IMAGE_NAME="elasticsearch"
 export IMAGE_VERSION="8.11.4"
@@ -19,3 +24,6 @@ export IMAGE_VERSION="latest"
 docker pull $IMAGE_NAME:$IMAGE_VERSION
 docker tag $IMAGE_NAME:$IMAGE_VERSION $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:$IMAGE_VERSION
 docker push $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:$IMAGE_VERSION
+
+
+```
