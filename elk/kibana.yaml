@@ -30,6 +30,8 @@ spec:
             value: http://elasticsearch.e2edemo.svc.cluster.local:9200
         ports:
         - containerPort: 5601
+      imagePullSecrets:
+      - name: abc-secret
 ---
 apiVersion: v1
 kind: Service
