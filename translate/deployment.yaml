@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: translation-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: translation-app
+  template:
+    metadata:
+      labels:
+        app: translation-app
+        egress.networking.gke.io/enabled: "true"
+    spec:
+      dnsConfig:
+        nameservers:
+        - 8.8.8.8
+      containers:
+      - name: translation-app
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/translation-app-test:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: ${HARBOR_SECRET}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: translation-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: translation-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
