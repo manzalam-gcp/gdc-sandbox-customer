@@ -11,10 +11,3 @@ spec:
   - from:
     - ipBlock:
         cidr: 0.0.0.0/0
-    ports:
-    - port: 80
-      protocol: TCP
-    - port: 9200
-      protocol: TCP
-    - port: 9300
-      protocol: TCP
