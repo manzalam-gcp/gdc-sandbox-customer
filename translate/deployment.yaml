@@ -18,7 +18,7 @@ spec:
         - 8.8.8.8
       containers:
       - name: translation-app
-        image: ${HARBOR_URL}/${HARBOR_PROJECT}/translation-app-test:latest
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/translation-app:latest
         ports:
         - containerPort: 8080
       imagePullSecrets:

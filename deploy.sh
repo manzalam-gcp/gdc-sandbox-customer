@@ -28,3 +28,7 @@ if [ "$1" == "open" ]; then
     apply open-web-ui/base/webui-pvc.yaml
     apply open-web-ui/base/webui-service.yaml
 fi
+
+if [ "$1" == "translation" ]; then
+    apply translate/deployment.yaml
+fi
