@@ -11,6 +11,8 @@ TRANSLATE_APP_API_KEY = os.environ['TRANSLATE_APP_API_KEY']
 @app.route('/translate', methods=['POST'])
 def translate_text():
 
+    print(request)
+
     try:
         data = request.get_json()
         text_to_translate = data.get('text')
