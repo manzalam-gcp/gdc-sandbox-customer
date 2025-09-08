@@ -34,8 +34,6 @@ def translate_text():
             'target': target_language
         }
 
-
-
         response = requests.post(TRANSLATE_API_URL, params=params)
         response.raise_for_status() # Raise an exception for bad status codes (4xx or 5xx)
 
