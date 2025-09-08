@@ -21,6 +21,13 @@ spec:
         image: ${HARBOR_URL}/${HARBOR_PROJECT}/translation-app:latest
         ports:
         - containerPort: 8080
+        env:
+        - name: TRANSLATE_APP_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: translate-app
+              key: translate-app-api-key
+
       imagePullSecrets:
       - name: ${HARBOR_SECRET}
 

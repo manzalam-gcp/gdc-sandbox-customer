@@ -5,6 +5,8 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 TRANSLATE_API_URL = 'https://translation.googleapis.com/language/translate/v2'
+TRANSLATE_APP_API_KEY = os.environ['TRANSLATE_APP_API_KEY']
+
 
 @app.route('/translate', methods=['POST'])
 def translate_text():
@@ -13,15 +15,17 @@ def translate_text():
         data = request.get_json()
         text_to_translate = data.get('text')
         target_language = data.get('target_language', 'en') # Default to English
-
+    
         if not text_to_translate:
             return jsonify({'error': 'Missing "text" in request body'}), 400
 
         params = {
-            'key': '${API_KEY}', # insert API key
+            'key': TRANSLATE_APP_API_KEY, 
             'q': text_to_translate,
             'target': target_language
         }
+
+
 
         response = requests.post(TRANSLATE_API_URL, params=params)
         response.raise_for_status() # Raise an exception for bad status codes (4xx or 5xx)

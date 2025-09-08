@@ -29,6 +29,7 @@ if [ "$1" == "open" ]; then
     apply open-web-ui/base/webui-service.yaml
 fi
 
-if [ "$1" == "translation" ]; then
+if [ "$1" == "translate" ]; then
+    apply translate/secret.yaml
     apply translate/deployment.yaml
 fi
