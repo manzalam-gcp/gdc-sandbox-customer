@@ -11,3 +11,10 @@ if [ "$1" == "translate" ]; then
     docker tag $TRANSLATE_IMAGE_NAME:latest $HARBOR_URL/$HARBOR_PROJECT/$TRANSLATE_IMAGE_NAME:latest
     docker push $HARBOR_URL/$HARBOR_PROJECT/$TRANSLATE_IMAGE_NAME:latest
 fi
+
+if [ "$1" == "ollama" ]; then
+    export IMAGE_NAME="ollama"
+    docker build -t $IMAGE_NAME ./ollama/
+    docker tag $IMAGE_NAME:latest $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:latest
+    docker push $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:latest
+fi
