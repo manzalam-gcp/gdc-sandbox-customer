@@ -10,6 +10,12 @@ apply() {
     envsubst < $@ | ku apply -f -
 }
 
+if [ "$1" == "bootstrap" ]; then
+    apply bootstrap/network/ingress.yaml
+    apply bootstrap/network/egress.yaml
+fi
+
+
 if [ "$1" == "elk" ]; then
     apply elk/elastic-statefull-set.yaml
     apply elk/headless-service.yaml
@@ -18,7 +24,6 @@ fi
 
 if [ "$1" == "app" ]; then
     apply app/deployment.yaml
-    apply app/network.yaml
 fi
 
 if [ "$1" == "open" ]; then

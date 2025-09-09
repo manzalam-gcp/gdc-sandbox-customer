@@ -19,6 +19,7 @@ spec:
       containers:
       - name: translation-app
         image: ${HARBOR_URL}/${HARBOR_PROJECT}/translation-app:latest
+        imagePullPolicy: Always 
         ports:
         - containerPort: 8080
         env:
