@@ -22,6 +22,20 @@ docker push $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:$IMAGE_VERSION
 
 ```
 
+```bash
+
+
+export IMAGE_NAME="ollama"
+docker build -t $IMAGE_NAME ./ollama/
+docker tag $IMAGE_NAME:latest $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:latest
+docker push $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:latest
+
+
+```
+
+
+
+
 
 ## Test 
 
