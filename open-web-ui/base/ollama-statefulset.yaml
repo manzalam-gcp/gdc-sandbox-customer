@@ -18,7 +18,7 @@ spec:
       - name: ${HARBOR_SECRET}
       containers:
       - name: ollama
-        image: ${HARBOR_URL}/${HARBOR_PROJECT}/ollama:latest@sha256:70aa08e37dc1ad3507ecde6993f7a228206315dbdfc12fedeb9d3500b44eda20
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/ollama:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 11434
