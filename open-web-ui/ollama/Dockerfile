@@ -4,7 +4,11 @@
     # Replace with your desired model(s)
     RUN nohup ollama serve > /tmp/ollama.log 2>&1 & \
         sleep 10 && \
-        ollama pull llama3
+        ollama pull gemma3:270m
+
+    RUN nohup ollama serve > /tmp/ollama.log 2>&1 & \
+        sleep 10 && \
+        ollama pull qwen:0.5b
 
     # Final image
     FROM ollama/ollama:latest
