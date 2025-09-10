@@ -27,9 +27,9 @@ spec:
             memory: "1024Mi"
         env:
           - name: ELASTICSEARCH_URL
-            value: http://elasticsearch.tack-1.svc.cluster.local:9200
+            value: http://10.252.7.214:9200
           - name: SERVER_PUBLICBASEURL
-            value: http://10.200.32.81/
+            value: http://10.200.32.81
         ports:
         - containerPort: 5601
       imagePullSecrets:
