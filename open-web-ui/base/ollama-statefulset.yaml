@@ -32,7 +32,7 @@ spec:
             nvidia.com/gpu: "0"
         volumeMounts:
         - name: ollama-volume
-          mountPath: /root/.ollama
+          mountPath: /root/.ollama-other
         tty: true
   volumeClaimTemplates:
   - metadata:
