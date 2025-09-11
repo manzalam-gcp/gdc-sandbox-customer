@@ -25,17 +25,25 @@ spec:
           requests:
             cpu: 500m
             memory: "1024Mi"
-        env:
-        - name: ELASTICSEARCH_URL
-          value: http://10.252.7.214:9200
-        - name: ELASTICSEARCH_HOSTS
-          value: http://10.252.7.214:9200
-        - name: SERVER_PUBLICBASEURL
-          value: http://10.200.32.81
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/share/kibana/config/kibana.yml
+          subPath: kibana.yml
+        # env:
+        # - name: ELASTICSEARCH_URL
+        #   value: http://10.252.7.214:9200
+        # - name: ELASTICSEARCH_HOSTS
+        #   value: http://10.252.7.214:9200
+        # - name: SERVER_PUBLICBASEURL
+        #   value: http://10.200.32.81
         ports:
         - containerPort: 5601
       imagePullSecrets:
       - name: ${HARBOR_SECRET}
+      volumes:
+      - name: config-volume
+        configMap:
+          name: kibana-config
 ---
 apiVersion: v1
 kind: Service
@@ -50,3 +58,12 @@ spec:
   selector:
     app: kibana
   type: LoadBalancer
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-config
+data:
+  kibana.yml: |
+    server.host: "0.0.0.0"
+    elasticsearch.hosts: ["http://your-elasticsearch-service:9200"]
