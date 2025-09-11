@@ -66,4 +66,4 @@ metadata:
 data:
   kibana.yml: |
     server.host: "0.0.0.0"
-    elasticsearch.hosts: ["http://your-elasticsearch-service:9200"]
+    elasticsearch.hosts: ["http://10.252.7.214:9200"]
