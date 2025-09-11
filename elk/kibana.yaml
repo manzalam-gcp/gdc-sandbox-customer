@@ -67,3 +67,4 @@ data:
   kibana.yml: |
     server.host: "0.0.0.0"
     elasticsearch.hosts: ["http://10.252.7.214:9200"]
+    server.publicBaseUrl: "http://10.200.32.81"
