@@ -13,10 +13,11 @@ apply() {
 if [ "$1" == "bootstrap" ]; then
     apply bootstrap/network/ingress.yaml
     apply bootstrap/network/egress.yaml
+    apply bootstrap/network/app.yaml
 fi
 
 
-if [ "$1" == "elk" ]; then
+if [ "$1" == "elastic" ]; then
     apply elk/elastic-statefull-set.yaml
     apply elk/headless-service.yaml
     apply elk/kibana.yaml
