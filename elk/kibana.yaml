@@ -27,7 +27,7 @@ spec:
             memory: "1024Mi"
         env:
           - name: ELASTICSEARCH_HOSTS
-            value: http://10.252.7.214:9300
+            value: http://10.252.7.214:9200
           - name: SERVER_PUBLICBASEURL
             value: http://10.200.32.81
         ports:

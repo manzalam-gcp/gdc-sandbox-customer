@@ -6,7 +6,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: elasticsearch
+      app: elasticsearch-service
   policyTypes:
   - Ingress
   ingress:
