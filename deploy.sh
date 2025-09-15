@@ -6,13 +6,13 @@ source functions.sh
 ACTION=${1:-apply}
 COMPONENT=$2
 
-if [ "$ACTION" != "apply" ] && [ "$ACTION" != "delete" ]; then
+if [ "$ACTION" != "apply" ] && [ "$ACTION" != "delete" ] && [ "$ACTION" != "restart" ]; then
     COMPONENT=$1
     ACTION="apply"
 fi
 
 if [ -z "$COMPONENT" ]; then
-    echo "Usage: $0 [apply|delete] {bootstrap|elastic|app|open|translate}"
+    echo "Usage: $0 [apply|delete|restart] {bootstrap|elastic|app|open|translate}"
     exit 1
 fi
 
