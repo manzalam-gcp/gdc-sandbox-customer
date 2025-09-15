@@ -7,20 +7,18 @@ if [ "$1" == "bootstrap" ]; then
     apply bootstrap/network/
 fi
 
-
-if [ "$1" == "elastic" || "$1" == "elastic/" ]; then
+if [ "$1" == "elastic" ]; then
     apply elastic/base/
 fi
 
 if [ "$1" == "app" ]; then
-    apply app/deployment.yaml
+    apply app/base/
 fi
 
-if [ "$1" == "open" || "$1" == "open/" ]; then
+if [ "$1" == "open" ]; then
     apply open/base/
 fi
 
 if [ "$1" == "translate" ]; then
-    apply translate/secret.yaml
-    apply translate/deployment.yaml
+    apply translate/base/
 fi
