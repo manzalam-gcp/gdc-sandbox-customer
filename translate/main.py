@@ -14,6 +14,10 @@ def test():
 
     return jsonify({"request":request.get_json()})
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message":"This is the translate app.`", "request":request.get_json()})
+
 
 @app.route('/translate', methods=['POST'])
 def translate_text():

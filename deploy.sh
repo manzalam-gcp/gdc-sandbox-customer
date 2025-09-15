@@ -1,23 +1,14 @@
 #!/bin/bash
 
 source .env
-
-ku() {
-    kubectl --kubeconfig ${KUBECONFIG} -n ${NAMESPACE} $@
-}
-
-apply() {
-    envsubst < $@ | ku apply -f -
-}
+source functions.sh
 
 if [ "$1" == "bootstrap" ]; then
-    apply bootstrap/network/ingress.yaml
-    apply bootstrap/network/egress.yaml
-    apply bootstrap/network/app.yaml
+    apply bootstrap/network/
 fi
 
 
-if [ "$1" == "elastic" ]; then
+if [ "$1" == "elastic" || "$1" == "elastic/" ]; then
     apply elastic/base/
 fi
 
@@ -25,8 +16,8 @@ if [ "$1" == "app" ]; then
     apply app/deployment.yaml
 fi
 
-if [ "$1" == "open" ]; then
-    apply open-web-ui/base/
+if [ "$1" == "open" || "$1" == "open/" ]; then
+    apply open/base/
 fi
 
 if [ "$1" == "translate" ]; then

@@ -1,20 +1,23 @@
 #!/bin/bash
 
 source .env
+source functions.sh
 
-ku() {
-    kubectl --kubeconfig ${KUBECONFIG} -n ${NAMESPACE} $@
-}
-
-if [ "$1" == "translate" ]; then
-    docker build -t $TRANSLATE_IMAGE_NAME ./translate/
-    docker tag $TRANSLATE_IMAGE_NAME:latest $HARBOR_URL/$HARBOR_PROJECT/$TRANSLATE_IMAGE_NAME:latest
-    docker push $HARBOR_URL/$HARBOR_PROJECT/$TRANSLATE_IMAGE_NAME:latest
+if [ "$1" == "app" ]; then
+    docker_build "./app/" "web-server-test"
 fi
 
-if [ "$1" == "ollama" ]; then
-    export IMAGE_NAME="ollama"
-    docker build -t $IMAGE_NAME ./open-web-ui/ollama/
-    docker tag $IMAGE_NAME:latest $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:latest
-    docker push $HARBOR_URL/$HARBOR_PROJECT/$IMAGE_NAME:latest
+if [ "$1" == "translate" ]; then
+    docker_build "./translate/"
+fi
+
+if [ "$1" == "open" ]; then
+    docker_build "./open/ollama/" "ollama"
+    docker_pull "ghcr.io/open-webui/open-webui:main" "open-webui"
+fi
+
+if [ "$1" == "elastic" ]; then
+    docker_pull "elasticsearch:8.11.4" "elasticsearch"
+    docker_pull "kibana:8.11.4" "kibana"
+    docker_pull "busybox:latest" "busybox"
 fi
