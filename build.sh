@@ -8,7 +8,7 @@ if [ "$1" == "app" ]; then
 fi
 
 if [ "$1" == "translate" ]; then
-    docker_build "./translate/"
+    docker_build "./translate/" "translate"
 fi
 
 if [ "$1" == "open" ]; then
