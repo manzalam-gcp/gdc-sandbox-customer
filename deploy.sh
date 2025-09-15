@@ -18,9 +18,7 @@ fi
 
 
 if [ "$1" == "elastic" ]; then
-    apply elk/elastic-statefull-set.yaml
-    apply elk/headless-service.yaml
-    apply elk/kibana.yaml
+    apply elastic/base/
 fi
 
 if [ "$1" == "app" ]; then
@@ -28,11 +26,7 @@ if [ "$1" == "app" ]; then
 fi
 
 if [ "$1" == "open" ]; then
-    apply open-web-ui/base/ollama-service.yaml
-    apply open-web-ui/base/ollama-statefulset.yaml
-    apply open-web-ui/base/webui-deployment.yaml
-    apply open-web-ui/base/webui-pvc.yaml
-    apply open-web-ui/base/webui-service.yaml
+    apply open-web-ui/base/
 fi
 
 if [ "$1" == "translate" ]; then
