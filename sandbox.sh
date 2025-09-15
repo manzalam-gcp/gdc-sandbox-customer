@@ -21,6 +21,14 @@ if [ "$1" == "tunnel" ]; then
     echo $response
 fi
 
+if [ "$1" == "env" ]; then
+    response=$(gcloud compute scp .env $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/Workspace/gdc-sandbox/.env \
+        --tunnel-through-iap \
+        --project $SANDBOX_PROJECT \
+        --zone $SANDBOX_ZONE)
+    exit 0
+fi
+
 if [ "$1" == "cp" ]; then
     response=$(gcloud compute scp $SANDBOX_INSTANCE:/home/$SANDBOX_USER/$2 $2 \
         --tunnel-through-iap \
