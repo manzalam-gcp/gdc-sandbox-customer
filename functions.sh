@@ -16,5 +16,5 @@ ku() {
 }
 
 apply() {
-    for f in *.yaml; do envsubst < $f | kubectl apply -f -; done
+    for f in $1/*.yaml; do envsubst < $f | ku apply -f -; done
 }
