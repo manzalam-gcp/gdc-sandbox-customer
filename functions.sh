@@ -23,3 +23,6 @@ delete() {
     for f in $1/*.yaml; do envsubst < $f | ku delete -f -; done
 }
 
+restart() {
+    for f in $1/*.yaml; do envsubst < $f | ku rollout restart -f -; done
+}

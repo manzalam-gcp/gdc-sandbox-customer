@@ -154,3 +154,78 @@ This step configures wide-open ingress and egress to the k8s network.  This is c
 ```bash
 deploy bootstrap
 ```
+
+
+## Testing and Debugging
+
+1. Get list of services: `ku get services`
+
+```
+sandboxuser2@bootstrapper-zone1:~/Workspace/gdc-sandbox$ ku get services
+NAME                                                              TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)             AGE
+elasticsearch                                                     ClusterIP      None           <none>          9200/TCP,9300/TCP   10d
+elasticsearch-service                                             LoadBalancer   10.252.7.214   10.200.32.100   9200:32109/TCP      5d
+g-svc-g-fre-elasticsearch-service-user-vm-1-e48-extern-3d8e441f   ClusterIP      None           <none>          9200/TCP            5d
+g-svc-g-fre-kibana-svc-user-vm-1-6f373458-external-3da7fa31       ClusterIP      None           <none>          80/TCP              10d
+g-svc-g-fre-ollama-service-user-vm-1-0812b24f-external-90dd6430   ClusterIP      None           <none>          11434/TCP           5d2h
+g-svc-g-fre-ollama-user-vm-1-2f4013c5-external-865f8c34           ClusterIP      None           <none>          11434/TCP           17h
+g-svc-g-fre-open-webui-service-user-vm-1-9245f-externa-71fb03f0   ClusterIP      None           <none>          80/TCP              10d
+g-svc-g-fre-translation-app-service-user-vm-1-6-extern-4281d8b2   ClusterIP      None           <none>          80/TCP              6d23h
+g-svc-g-fre-web-server-test-service-user-vm-1-6-extern-550e41d5   ClusterIP      None           <none>          80/TCP              70m
+kibana-svc                                                        LoadBalancer   10.252.6.175   10.200.32.81    80:31694/TCP        10d
+ollama                                                            LoadBalancer   10.252.7.131   10.200.32.101   11434:30377/TCP     17h
+ollama-service                                                    LoadBalancer   10.252.7.121   10.200.32.99    11434:31045/TCP     10d
+open-webui-service                                                LoadBalancer   10.252.7.1     10.200.32.91    80:32207/TCP        10d
+translation-app-service                                           LoadBalancer   10.252.7.215   10.200.32.97    80:31494/TCP        6d23h
+web-server-test-service                                           LoadBalancer   10.252.7.128   10.200.32.74    80:30855/TCP        70m
+```
+
+
+2. Create SSH tunnel in a new terminal window: `./sandbox.sh ssh`
+
+3. Get external ip of `web-server-test-service`.  Then run: `curl 10.200.32.74`. 
+
+```
+tackaberry@tackaberry50:~/Workspace/gdc-sandbox$ curl 10.200.32.74
+<!DOCTYPE html>
+<html>
+<body>
+Hello World!!
+</body>
+```
+
+4. Get external ip of `translation-app-service`.  Then run: 
+
+Based on this [tutorial](https://cloud.google.com/distributed-cloud/sandbox/latest/services/translation).
+
+```
+export IP=10.200.32.97
+curl -X POST -H "Content-Type: application/json" -d '{"text": "Hello, world!", "target_language": "es"}' http://${IP}/translate
+```
+
+```
+{
+  "detected_source_language": "en",
+  "original_text": "Hello, world!",
+  "translated_text": "\u00a1Hola Mundo!"
+}
+```
+
+1. Get deployments: `ku get pods`
+
+```
+sandboxuser2@bootstrapper-zone1:~/Workspace/gdc-sandbox$ ku get pods
+NAME                                     READY   STATUS    RESTARTS     AGE
+es-cluster-0                             1/1     Running   0            3d23h
+es-cluster-1                             1/1     Running   0            3d23h
+es-cluster-2                             1/1     Running   0            3d23h
+kibana-6c696cb7c9-gg9t7                  1/1     Running   1 (4d ago)   4d
+ollama-0                                 1/1     Running   0            4d1h
+open-webui-deployment-564f857845-9hf6b   1/1     Running   0            17h
+translation-app-684ccb946b-646cq         1/1     Running   0            17h
+web-server-test-6dfc8d8876-5l4hz         1/1     Running   0            3m6s
+web-server-test-6dfc8d8876-jvqxm         1/1     Running   0            2m56s
+
+```
+
+2. Log into pod: `ku exec -it open-webui-deployment-564f857845-9hf6b -- /bin/bash`
