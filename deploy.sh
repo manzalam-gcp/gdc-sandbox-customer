@@ -34,7 +34,7 @@ case "$COMPONENT" in
         ;;
     *)
         echo "Error: Unknown component '$COMPONENT'."
-        echo "Usage: $0 [apply|delete] {bootstrap|elastic|app|open|translate}"
+        echo "Usage: $0 [apply|delete|restart] {bootstrap|elastic|app|open|translate}"
         exit 1
         ;;
 esac

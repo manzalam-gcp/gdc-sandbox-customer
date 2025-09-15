@@ -22,7 +22,7 @@ if [ "$1" == "tunnel" ]; then
 fi
 
 if [ "$1" == "env" ]; then
-    response=$(gcloud compute scp .env $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/Workspace/gdc-sandbox/.env \
+    response=$(gcloud compute scp .env $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/gdc-sandbox/.env \
         --tunnel-through-iap \
         --project $SANDBOX_PROJECT \
         --zone $SANDBOX_ZONE)
@@ -39,7 +39,7 @@ if [ "$1" == "cp" ]; then
 fi
 
 if [ "$1" == "up" ]; then
-    response=$(gcloud compute scp --recurse  $2 $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/Workspace/ \
+    response=$(gcloud compute scp --recurse  $2 $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/ \
         --tunnel-through-iap \
         --project $SANDBOX_PROJECT \
         --zone $SANDBOX_ZONE)
