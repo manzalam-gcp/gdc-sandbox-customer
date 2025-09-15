@@ -18,3 +18,8 @@ ku() {
 apply() {
     for f in $1/*.yaml; do envsubst < $f | ku apply -f -; done
 }
+
+delete() {
+    for f in $1/*.yaml; do envsubst < $f | ku delete -f -; done
+}
+

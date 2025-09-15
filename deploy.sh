@@ -3,22 +3,38 @@
 source .env
 source functions.sh
 
-if [ "$1" == "bootstrap" ]; then
-    apply bootstrap/network/
+ACTION=${1:-apply}
+COMPONENT=$2
+
+if [ "$ACTION" != "apply" ] && [ "$ACTION" != "delete" ]; then
+    COMPONENT=$1
+    ACTION="apply"
 fi
 
-if [ "$1" == "elastic" ]; then
-    apply elastic/base/
+if [ -z "$COMPONENT" ]; then
+    echo "Usage: $0 [apply|delete] {bootstrap|elastic|app|open|translate}"
+    exit 1
 fi
 
-if [ "$1" == "app" ]; then
-    apply app/base/
-fi
-
-if [ "$1" == "open" ]; then
-    apply open/base/
-fi
-
-if [ "$1" == "translate" ]; then
-    apply translate/base/
-fi
+case "$COMPONENT" in
+    bootstrap)
+        $ACTION bootstrap/network/
+        ;;
+    elastic)
+        $ACTION workloads/elastic/base/
+        ;;
+    app)
+        $ACTION workloads/app/base/
+        ;;
+    open)
+        $ACTION workloads/open/base/
+        ;;
+    translate)
+        $ACTION workloads/translate/base/
+        ;;
+    *)
+        echo "Error: Unknown component '$COMPONENT'."
+        echo "Usage: $0 [apply|delete] {bootstrap|elastic|app|open|translate}"
+        exit 1
+        ;;
+esac

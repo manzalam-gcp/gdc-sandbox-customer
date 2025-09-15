@@ -3,21 +3,24 @@
 source .env
 source functions.sh
 
-if [ "$1" == "app" ]; then
-    docker_build "./app/" "web-server-test"
-fi
-
-if [ "$1" == "translate" ]; then
-    docker_build "./translate/" "translate"
-fi
-
-if [ "$1" == "open" ]; then
-    docker_build "./open/ollama/" "ollama"
-    docker_pull "ghcr.io/open-webui/open-webui:main" "open-webui"
-fi
-
-if [ "$1" == "elastic" ]; then
-    docker_pull "elasticsearch:8.11.4" "elasticsearch"
-    docker_pull "kibana:8.11.4" "kibana"
-    docker_pull "busybox:latest" "busybox"
-fi
+case "$1" in
+    app)
+        docker_build "./workloads/app/" "web-server-test"
+        ;;
+    translate)
+        docker_build "./workloads/translate/" "translate"
+        ;;
+    open)
+        docker_build "./workloads/open/ollama/" "ollama"
+        docker_pull "ghcr.io/open-webui/open-webui:main" "open-webui"
+        ;;
+    elastic)
+        docker_pull "elasticsearch:8.11.4" "elasticsearch"
+        docker_pull "kibana:8.11.4" "kibana"
+        docker_pull "busybox:latest" "busybox"
+        ;;
+    *)
+        echo "Usage: $0 {app|translate|open|elastic}"
+        exit 1
+        ;;
+esac
