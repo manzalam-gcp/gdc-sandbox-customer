@@ -1,7 +1,5 @@
 #!/bin/bash
 
-shopt -s expand_aliases
-
 source .env
 source functions.sh
 
