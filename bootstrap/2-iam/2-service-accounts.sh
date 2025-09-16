@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source .env
 
 export SERVICE_ACCOUNT="ai-apps"

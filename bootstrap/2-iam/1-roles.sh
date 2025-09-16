@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source .env
 
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=ai-ocr-developer --member=user:$PLATFORM_ADMIN

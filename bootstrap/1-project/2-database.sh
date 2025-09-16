@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source .env
 
 gdcloud database clusters create $DB_CLUSTER_NAME --database-version $DB_VERSION --admin-password $DB_ADMIN_PASSWORD --project $WORKLOAD_PROJECT
