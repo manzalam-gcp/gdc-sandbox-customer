@@ -18,7 +18,7 @@ fi
 
 case "$COMPONENT" in
     bootstrap)
-        $ACTION bootstrap/network/
+        $ACTION bootstrap/3-network/
         ;;
     elastic)
         $ACTION workloads/elastic/base/

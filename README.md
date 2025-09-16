@@ -253,3 +253,54 @@ web-server-test-6dfc8d8876-jvqxm         1/1     Running   0            2m56s
 ```
 
 2. Log into pod: `ku exec -it open-webui-deployment-564f857845-9hf6b -- /bin/bash`
+
+
+## Exact Setup
+
+```bash
+cd ~
+mkdir ~.ssh
+cd .ssh/
+touch config
+# paste in ssh config from above
+vi config 
+ssh-keygen gitlab
+mv gitlab gitlab.pem
+cat gitlab.pub
+# copy to gitlab ssh keys
+cd ..
+git clone gitlab:/google-cloud-ce/communities/Canada-PubSec/gdc/gdc-sandbox
+
+cd ~
+
+# go to console, login download CLI bundle
+mv Downloads/gdcloud_cli.tar.gz .
+tar -xf gdcloud_cli.tar.gz
+echo 'export PATH=$PATH:~/google-distributed-cloud-hosted-cli/bin' >> ~/.bashrc
+source ~/.bashrc
+
+gdcloud config set core/organization_console_url https://console.org-1.zone1.google.gdch.test
+
+
+echo -n | openssl s_client -showcerts -connect console.org-1.zone1.google.gdch.test:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > org-1-web-tls-ca.cert
+
+curl -k https://console.org-1.zone1.google.gdch.test/.well-known/login-config | grep certificateAuthorityData | head -1 | cut -d : -f 2 | awk '{print $1}' | sed 's/"//g' | base64 --decode > trusted_certs.crt
+
+
+cd gdc-sandbox/
+
+# on laptop, run `./sandbox.sh env`
+source .env
+
+login
+# harbor login will fail
+
+./bootstrap/1-project/1-project.sh
+
+./bootstrap/2-iam/1-roles.sh 
+
+login
+
+deploy bootstrap
+
+```
