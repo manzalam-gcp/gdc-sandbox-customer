@@ -178,6 +178,8 @@ deploy bootstrap
 
 ## Testing and Debugging
 
+### Test web service
+
 1. Get list of services: `ku get services`
 
 ```
@@ -230,6 +232,8 @@ curl -X POST -H "Content-Type: application/json" -d '{"text": "Hello, world!", "
   "translated_text": "\u00a1Hola Mundo!"
 }
 ```
+
+### Log into pod to inspect
 
 1. Get deployments: `ku get pods`
 
