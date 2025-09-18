@@ -305,6 +305,9 @@ login
 
 deploy bootstrap
 
+build app
+
+deploy app
 
 
 ```

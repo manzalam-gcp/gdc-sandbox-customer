@@ -1,9 +1,10 @@
+#!/bin/bash 
 
 source .env
 
 account=$(gcloud auth list  --filter=status:ACTIVE --format="value(account)")
 
-if [ "$account" == "tackaberry@google.com" ]; then
+if [ "$account" == $GOOGLE_LDAP ]; then
     echo "Logged in. "
     echo "$account"
 else
