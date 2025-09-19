@@ -8,7 +8,12 @@ RUN nohup ollama serve > /tmp/ollama.log 2>&1 & \
 
 RUN nohup ollama serve > /tmp/ollama.log 2>&1 & \
     sleep 10 && \
-    ollama pull qwen:0.5b
+    ollama pull gemma3n:e4b
+
+RUN nohup ollama serve > /tmp/ollama.log 2>&1 & \
+    sleep 10 && \
+    ollama pull embeddinggemma:300m
+
 
 # Final image
 FROM ollama/ollama:latest
