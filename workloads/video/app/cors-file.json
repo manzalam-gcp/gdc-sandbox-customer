@@ -16,5 +16,11 @@
       "method": ["GET"],
       "responseHeader": ["Content-Type"],
       "maxAgeSeconds": 3600
-    }    
+    },
+    {
+      "origin": ["http://10.200.32.53"],
+      "method": ["GET"],
+      "responseHeader": ["Content-Type"],
+      "maxAgeSeconds": 3600
+    }        
 ]
