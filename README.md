@@ -259,12 +259,12 @@ web-server-test-6dfc8d8876-jvqxm         1/1     Running   0            2m56s
 
 ```bash
 cd ~
-mkdir ~.ssh
+mkdir ~/.ssh
 cd .ssh/
 touch config
 # paste in ssh config from above
 vi config 
-ssh-keygen gitlab
+ssh-keygen -f gitlab
 mv gitlab gitlab.pem
 cat gitlab.pub
 # copy to gitlab ssh keys
