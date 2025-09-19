@@ -19,6 +19,9 @@ case "$1" in
         docker_pull "kibana:8.11.4" "kibana"
         docker_pull "busybox:latest" "busybox"
         ;;
+    video)
+        docker_build "./workloads/video/app/" "video-intelligence"
+        ;;        
     *)
         echo "Usage: $0 {app|translate|open|elastic}"
         exit 1

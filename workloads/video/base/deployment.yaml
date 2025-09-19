@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-intelligence
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: video-intelligence
+  template:
+    metadata:
+      labels:
+        app: video-intelligence
+    spec:
+      containers:
+      - name: video-intelligence-container
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/video-intelligence:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+      imagePullSecrets:
+      - name: ${HARBOR_SECRET}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: video-intelligence-service
+spec:
+  type: LoadBalancer 
+  selector:
+    app: video-intelligence
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+

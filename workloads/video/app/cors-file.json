@@ -1,0 +1,20 @@
+[
+    {
+      "origin": ["http://0.0.0.0:8000"],
+      "method": ["GET"],
+      "responseHeader": ["Content-Type"],
+      "maxAgeSeconds": 3600
+    },
+    {
+      "origin": ["https://video-intelligence-demo-1027891813139.us-central1.run.app"],
+      "method": ["GET"],
+      "responseHeader": ["Content-Type"],
+      "maxAgeSeconds": 3600
+    },
+    {
+      "origin": ["https://video-intelligence-demo-nnpitinpsa-uc.a.run.app"],
+      "method": ["GET"],
+      "responseHeader": ["Content-Type"],
+      "maxAgeSeconds": 3600
+    }    
+]

@@ -12,7 +12,7 @@ if [ "$ACTION" != "apply" ] && [ "$ACTION" != "delete" ] && [ "$ACTION" != "rest
 fi
 
 if [ -z "$COMPONENT" ]; then
-    echo "Usage: $0 [apply|delete|restart] {bootstrap|elastic|app|open|translate}"
+    echo "Usage: $0 [apply|delete|restart] {bootstrap|elastic|app|open|translate|video}"
     exit 1
 fi
 
@@ -31,6 +31,9 @@ case "$COMPONENT" in
         ;;
     translate)
         $ACTION workloads/translate/base/
+        ;;
+    video)
+        $ACTION workloads/video/base/
         ;;
     *)
         echo "Error: Unknown component '$COMPONENT'."
