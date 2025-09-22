@@ -307,6 +307,8 @@ deploy bootstrap
 
 build app
 
+./bootstrap/1-project/3-harbor.sh
+
 deploy app
 
 
