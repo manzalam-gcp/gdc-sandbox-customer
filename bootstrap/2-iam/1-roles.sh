@@ -16,4 +16,5 @@ gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=namespace-admin
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=vertex-ai-prediction-user --member=user:$PLATFORM_ADMIN
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-grafana-viewer --member=user:$PLATFORM_ADMIN
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-db-admin --member=user:$PLATFORM_ADMIN
-
+gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-vm-admin --member=user:$PLATFORM_ADMIN
+gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-vm-image-admin --member=user:$PLATFORM_ADMIN
