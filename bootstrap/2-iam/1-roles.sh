@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source .env
 
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=ai-ocr-developer --member=user:$PLATFORM_ADMIN
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=ai-translation-developer --member=user:$PLATFORM_ADMIN
@@ -18,3 +17,4 @@ gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-grafana
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-db-admin --member=user:$PLATFORM_ADMIN
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-vm-admin --member=user:$PLATFORM_ADMIN
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-vm-image-admin --member=user:$PLATFORM_ADMIN
+gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=ai-platform-admin --member=user:$PLATFORM_ADMIN
