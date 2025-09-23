@@ -18,4 +18,5 @@ gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-grafana
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-db-admin --member=user:$PLATFORM_ADMIN
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-vm-admin --member=user:$PLATFORM_ADMIN
 gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=project-vm-image-admin --member=user:$PLATFORM_ADMIN
-gdcloud projects add-iam-policy-binding $WORKLOAD_PROJECT --role=ai-platform-admin --member=user:$PLATFORM_ADMIN
+
+gdcloud organizations add-iam-policy-binding $ORGANIZATION --role=ai-platform-admin --member=user:$PLATFORM_ADMIN
