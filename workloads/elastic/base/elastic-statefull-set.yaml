@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: elasticsearch
-        image: ${HARBOR_URL}/${HARBOR_PROJECT}/elasticsearch:8.11.4
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/elasticsearch:latest
         imagePullPolicy: Always
         resources:
             limits:

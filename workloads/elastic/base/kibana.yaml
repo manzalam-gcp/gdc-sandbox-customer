@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kibana
-        image: ${HARBOR_URL}/${HARBOR_PROJECT}/kibana:8.11.4
+        image: ${HARBOR_URL}/${HARBOR_PROJECT}/kibana:latest
         imagePullPolicy: Always
         resources:
           limits:
