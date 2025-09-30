@@ -12,3 +12,5 @@ FROM nginx
 WORKDIR /usr/share/nginx/html
 COPY . ./
 COPY --from=data-downloader /videos ./videos
+
+

@@ -18,6 +18,7 @@ fi
 
 case "$COMPONENT" in
     bootstrap)
+        $ACTION bootstrap/2-iam/
         $ACTION bootstrap/3-network/
         ;;
     elastic)
