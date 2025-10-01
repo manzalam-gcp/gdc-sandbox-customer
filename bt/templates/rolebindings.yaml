@@ -1,18 +1,16 @@
-roles: 
-  - vertex-ai-prediction-user
+{{- range $roleName := .Values.iam.requiredRoles }}
 ---
-{{- range .Values.roles }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ .Values.iam.platformAdminUser }}-{{ . | quote }} 
+  name: {{ .Values.iam.platformAdminUser }}-{{ $roleName }} 
   namespace: {{ .Values.metadata.userNamespace }}
 subjects:
 - kind: User
   name: {{ .Values.iam.platformAdminUser | quote }}
 roleRef:
   kind: Role
-  name: {{ . | quote }}
+  name: {{ $roleName }}
   apiGroup: rbac.authorization.k8s.io
 {{- end }}
 ---

@@ -4,3 +4,7 @@ metadata:
 
 iam:
   platformAdminUser: "fop-platform-admin@example.com"
+  requiredRoles: 
+    - vertex-ai-prediction-user
+    - ai-ocr-developer
+    - ai-translation-developer
