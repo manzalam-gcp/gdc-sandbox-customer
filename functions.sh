@@ -12,17 +12,33 @@ docker_build() {
 
 
 ku() {
-    kubectl --kubeconfig ${KUBECONFIG} $@
+    kubectl --kubeconfig ${HOME}/${CLUSTER_NAME}-kubeconfig -n ${NAMESPACE} $@
+}
+
+ko() {
+    kubectl --kubeconfig ${HOME}/org-1-admin-kubeconfig $@
 }
 
 apply() {
-    for f in $1/*.yaml; do envsubst < $f | ku -n ${2:-"$NAMESPACE"} apply -f -; done
+    if [ "$2" = "platform" ]; then
+        for f in $1/*.yaml; do envsubst < $f | ko -n "platform" apply -f -; done
+    else
+        for f in $1/*.yaml; do envsubst < $f | ku apply -f -; done
+    fi
 }
 
 delete() {
-    for f in $1/*.yaml; do envsubst < $f | ku -n ${2:-"$NAMESPACE"} delete -f -; done
+    if [ "$2" = "platform" ]; then
+        for f in $1/*.yaml; do envsubst < $f | ko -n "platform" delete -f -; done
+    else
+        for f in $1/*.yaml; do envsubst < $f | ku delete -f -; done
+    fi    
 }
 
 restart() {
-    for f in $1/*.yaml; do envsubst < $f | ku -n ${2:-"$NAMESPACE"} rollout restart -f -; done
+    if [ "$2" = "platform" ]; then
+        for f in $1/*.yaml; do envsubst < $f | ko -n "platform" rollout restart -f -; done
+    else
+        for f in $1/*.yaml; do envsubst < $f | ku rollout restart -f -; done
+    fi
 }
