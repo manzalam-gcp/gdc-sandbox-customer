@@ -20,6 +20,7 @@ case "$COMPONENT" in
     bootstrap)
         $ACTION bootstrap/2-iam/
         $ACTION bootstrap/3-network/
+        $ACTION bootstrap/5-platform/ platform
         ;;
     elastic)
         $ACTION workloads/elastic/base/

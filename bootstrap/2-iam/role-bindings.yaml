@@ -20,7 +20,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-ai-ocr-developer
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -33,7 +32,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding 
 metadata:
   name: ${PLATFORM_ADMIN}-ai-translation-developer
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -46,7 +44,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-harbor-instance-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -59,7 +56,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-harbor-instance-viewer
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -72,7 +68,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-kms-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -85,7 +80,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-project-iam-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -98,7 +92,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-project-networkpolicy-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -111,7 +104,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-secret-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -124,7 +116,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-workbench-notebooks-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -137,7 +128,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-k8s-networkpolicy-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -150,7 +140,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-namespace-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -163,7 +152,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-vertex-ai-prediction-user
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -176,7 +164,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-project-grafana-viewer
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -189,7 +176,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-project-db-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -202,7 +188,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-project-vm-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}
@@ -215,7 +200,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: ${PLATFORM_ADMIN}-project-vm-image-admin
-  namespace: ${NAMESPACE}
 subjects:
 - kind: User
   name: ${PLATFORM_ADMIN}

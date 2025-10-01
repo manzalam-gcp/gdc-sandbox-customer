@@ -16,13 +16,13 @@ ku() {
 }
 
 apply() {
-    for f in $1/*.yaml; do envsubst < $f | ku apply -f -; done
+    for f in $1/*.yaml; do envsubst < $f | ku -n ${$2 ? $2 : NAMESPACE} apply -f -; done
 }
 
 delete() {
-    for f in $1/*.yaml; do envsubst < $f | ku delete -f -; done
+    for f in $1/*.yaml; do envsubst < $f | ku -n ${$2 ? $2 : NAMESPACE} delete -f -; done
 }
 
 restart() {
-    for f in $1/*.yaml; do envsubst < $f | ku -n ${NAMESPACE} rollout restart -f -; done
+    for f in $1/*.yaml; do envsubst < $f | ku -n ${$2 ? $2 : NAMESPACE} rollout restart -f -; done
 }
