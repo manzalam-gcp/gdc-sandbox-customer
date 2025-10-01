@@ -4,7 +4,7 @@ metadata:
   name: ${PLATFORM_ADMIN}-ai-platform-admin
   namespace: platform
 subjects:
-  kind: User
+- kind: User
   name: ${PLATFORM_ADMIN}
 roleRef:
   kind: Role
