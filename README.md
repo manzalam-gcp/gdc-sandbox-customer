@@ -62,7 +62,7 @@ gdcloud config set core/organization_console_url https://console.org-1.zone1.goo
 
 ### Set up gitlab account
 
-Generate a keypaid on GDC CLI. Run `ssh-keygen`.  Move key into `~/.ssh/gitlab.pem`. Copy public key to gitlab ssh keys. 
+Generate a key pair on GDC CLI. Run `ssh-keygen`.  Move key into `~/.ssh/gitlab.pem`. Copy public key to gitlab ssh keys. 
 
 Carete `~/.ssh/config` including:
 

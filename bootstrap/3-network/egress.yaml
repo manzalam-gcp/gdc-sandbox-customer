@@ -1,7 +1,6 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  namespace: ${NAMESPACE}
   name: allow-external-traffic-egress
 spec:
   podSelector: {}
