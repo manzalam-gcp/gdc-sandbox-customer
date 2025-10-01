@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-external-traffic-egress
+  name: allow-external-traffic--egress
 spec:
   podSelector: {}
   policyTypes:
@@ -14,7 +14,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-external-traffic-ingress
+  name: allow-external-traffic--ingress
 spec:
   podSelector: {}
   policyTypes:
