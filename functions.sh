@@ -12,7 +12,7 @@ docker_build() {
 
 
 ku() {
-    kubectl --kubeconfig ${KUBECONFIG} -n ${NAMESPACE} $@
+    kubectl --kubeconfig ${KUBECONFIG} $@
 }
 
 apply() {
@@ -24,5 +24,5 @@ delete() {
 }
 
 restart() {
-    for f in $1/*.yaml; do envsubst < $f | ku rollout restart -f -; done
+    for f in $1/*.yaml; do envsubst < $f | ku -n ${NAMESPACE} rollout restart -f -; done
 }
