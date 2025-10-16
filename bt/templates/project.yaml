@@ -1,0 +1,5 @@
+apiVersion: resourcemanager.global.gdc.goog/v1
+kind: Project
+metadata:
+  namespace: platform
+  name: {{ .Values.metadata.userNamespace }}
