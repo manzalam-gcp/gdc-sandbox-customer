@@ -10,3 +10,9 @@ metadata:
   namespace: platform
   name: tack-2
 ---
+apiVersion: resourcemanager.gdc.goog/v1
+kind: Project
+metadata:
+  namespace: platform
+  name: project-2
+---

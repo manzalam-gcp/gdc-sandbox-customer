@@ -1,0 +1,41 @@
+resources:
+- ../../base
+- database.yaml
+
+configMapGenerator:
+- name: project-configmap-1
+  envs:
+  - project.properties
+
+namePrefix: project-2--
+  
+labels:
+- includeSelectors: true
+  pairs:
+    app-name: project-2
+
+secretGenerator:
+- name: project-secret-1
+  envs:
+  - project-secrets.properties
+
+replacements:
+- source:
+    kind: ConfigMap
+    name: project-configmap-1
+    fieldPath: data.ADMIN_USER
+  targets:
+  - select:
+      kind: RoleBinding
+    fieldPaths:
+    - subjects.*.name
+- source:
+    kind: Secret
+    name: project-secret-1
+    fieldPath: data.DB_ADMIN_PASSWORD
+  targets:
+  - select:
+      kind: Secret
+      name: db-pw-psql
+    fieldPaths:
+    - data.psql
