@@ -19,6 +19,10 @@ ko() {
     kubectl --kubeconfig ${HOME}/org-1-admin-kubeconfig $@
 }
 
+kustomize() {
+    ku apply -k $@
+}
+
 apply() {
     if [ "$2" = "platform" ]; then
         for f in $1/*.yaml; do envsubst < $f | ko -n "platform" apply -f -; done

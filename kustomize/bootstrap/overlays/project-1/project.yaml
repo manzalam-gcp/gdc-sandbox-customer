@@ -1,0 +1,7 @@
+kind: NetworkPolicy
+metadata:
+  namespace: project-1
+---
+kind: NetworkPolicy
+metadata:
+  namespace: project-1

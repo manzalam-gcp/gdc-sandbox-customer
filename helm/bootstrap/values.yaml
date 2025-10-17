@@ -1,6 +1,6 @@
 metadata:
   name: bootstrap
-  userNamespace: tack-1
+  userNamespace: yourproject-namespace
 
 iam:
   platformAdminUser: "fop-platform-admin@example.com"
