@@ -22,6 +22,10 @@ case "$COMPONENT" in
         $ACTION bootstrap/3-network/
         $ACTION bootstrap/5-platform/ "platform"
         ;;
+    onboard)
+        $ACTION onboard/projects/
+        $ACTION onboard/users/
+        ;;
     elastic)
         $ACTION workloads/elastic/base/
         ;;
@@ -39,7 +43,7 @@ case "$COMPONENT" in
         ;;
     *)
         echo "Error: Unknown component '$COMPONENT'."
-        echo "Usage: $0 [apply|delete|restart] {bootstrap|elastic|app|open|translate}"
+        echo "Usage: $0 [apply|delete|restart] {bootstrap|onboard|elastic|app|open|translate}"
         exit 1
         ;;
 esac
