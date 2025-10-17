@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: db-pw-psql
+  name: db-pw-project-2--psql
 type: Opaque
 data:
   psql: "${DB_ADMIN_PASSWORD_BASE64}"
@@ -14,7 +14,7 @@ spec:
   primarySpec:
     adminUser:
       passwordRef:
-        name: db-pw-psql
+        name: db-pw-project-2--psql
     version: "POSTGRESQL_13"
     resources:
       memory: 26Gi

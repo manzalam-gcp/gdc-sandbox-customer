@@ -1,11 +1,6 @@
 resources:
 - database.yaml
 
-configMapGenerator:
-- name: project-configmap-1
-  envs:
-  - project.properties
-
 namePrefix: project-2--
   
 labels:
@@ -26,6 +21,6 @@ replacements:
   targets:
   - select:
       kind: Secret
-      name: db-pw-psql
+      name: db-pw-project-2--psql
     fieldPaths:
     - data.psql
