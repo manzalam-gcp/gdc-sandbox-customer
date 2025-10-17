@@ -1,5 +1,5 @@
 resources:
-- ../../base
+- database.yaml
 
 configMapGenerator:
 - name: project-configmap-1
@@ -20,11 +20,12 @@ secretGenerator:
 
 replacements:
 - source:
-    kind: ConfigMap
-    name: project-configmap-1
-    fieldPath: data.ADMIN_USER
+    kind: Secret
+    name: project-secret-1
+    fieldPath: data.DB_ADMIN_PASSWORD
   targets:
   - select:
-      kind: RoleBinding
+      kind: Secret
+      name: db-pw-psql
     fieldPaths:
-    - subjects.*.name
+    - data.psql
