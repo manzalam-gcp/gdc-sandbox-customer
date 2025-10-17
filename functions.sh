@@ -14,14 +14,18 @@ docker_build() {
 ku() {
     kubectl --kubeconfig ${HOME}/${CLUSTER_NAME}-kubeconfig -n ${NAMESPACE} $@
 }
-
+    
 ko() {
-    kubectl --kubeconfig ${HOME}/org-1-admin-kubeconfig $@
+    kubectl --kubeconfig ${HOME}/org-1-admin-kubeconfig -n ${NAMESPACE} $@
+}
+
+kp() {
+    kubectl --kubeconfig ${HOME}/org-1-admin-kubeconfig -n platform $@
 }
 
 kustomize() {
     if [ "$2" = "kustomize/projects" ]; then
-        ko -n "platform" -k $@
+        kp apply -k $@
     else
         ku apply -k $@
     fi

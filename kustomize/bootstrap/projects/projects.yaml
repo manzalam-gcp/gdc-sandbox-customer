@@ -1,5 +1,12 @@
-apiVersion: resourcemanager.global.gdc.goog/v1
+apiVersion: resourcemanager.gdc.goog/v1
 kind: Project
 metadata:
   namespace: platform
   name: tack-1
+---
+apiVersion: resourcemanager.gdc.goog/v1
+kind: Project
+metadata:
+  namespace: platform
+  name: tack-2
+---
