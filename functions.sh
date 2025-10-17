@@ -20,7 +20,11 @@ ko() {
 }
 
 kustomize() {
-    ku apply -k $@
+    if [ "$2" = "kustomize/projects" ]; then
+        ko -n "platform" -k $@
+    else
+        ku apply -k $@
+    fi
 }
 
 apply() {

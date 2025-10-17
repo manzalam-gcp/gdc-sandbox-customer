@@ -12,6 +12,7 @@ labels:
 - includeSelectors: true
   pairs:
     app-name: tack-1
+
 secretGenerator:
 - name: project-secret-1
   files:
