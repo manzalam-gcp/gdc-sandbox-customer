@@ -1,3 +1,7 @@
+config: 
+  harbor:
+    instance: user-haas-instance
+    project: user-project
 projects:
 - name: tack-1
   orgId: org-1
