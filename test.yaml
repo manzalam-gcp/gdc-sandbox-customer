@@ -1,0 +1,30 @@
+Name:         user-fop-platform-admin--example--com-namespace-admin
+Namespace:    tack-4
+API Version:  iam.global.gdc.goog/v1
+Kind:         IAMRoleBinding
+Spec:
+  Role Ref:
+    API Group:  iam.global.gdc.goog/v1
+    Kind:       IAMRole
+    Name:       namespace-admin
+  Subjects:
+    API Group:  rbac.authorization.k8s.io
+    Kind:       User
+    Name:       fop-platform-admin@example.com
+
+project-iam-admin
+k8s-networkpolicy-admin
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: fop-platform-admin-rolebinding-viewer-x
+subjects:
+- kind: User
+  name: fop-platform-admin@example.com
+roleRef:
+  kind: Role
+  name: g-namespace-admin
+  apiGroup: rbac.authorization.k8s.io
+
+project-viewer

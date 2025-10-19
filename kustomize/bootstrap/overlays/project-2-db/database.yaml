@@ -10,6 +10,7 @@ apiVersion: postgresql.dbadmin.gdc.goog/v1
 kind: DBCluster
 metadata:
   name: psql
+
 spec:
   primarySpec:
     adminUser:

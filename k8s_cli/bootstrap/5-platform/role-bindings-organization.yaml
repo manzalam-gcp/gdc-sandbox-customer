@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ${PLATFORM_ADMIN}-ai-platform-admin
+  namespace: platform
+subjects:
+- kind: User
+  name: ${PLATFORM_ADMIN}
+roleRef:
+  kind: Role
+  name: ai-platform-admin
+  apiGroup: rbac.authorization.k8s.io

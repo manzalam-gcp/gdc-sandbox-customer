@@ -1,0 +1,18 @@
+projects:
+- name: project-1
+  displayName: Project 1
+  description: This is Project 1
+  users:
+    - user: fop-platform-admin@example.com
+      roleSetRef: roleSets/developer
+- name: project-2
+  displayName: Project 2
+  description: This is Project 2
+  users:
+    - user: fop-platform-admin@example.com
+      roleSetRef: roleSets/developer
+roleSets:
+  developer:
+    roles:
+      - project-iam-admin
+      - k8s-networkpolicy-admin

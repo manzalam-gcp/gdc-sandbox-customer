@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-pw-${DB_PSQL_CLUSTER_NAME}
+  namespace: ${NAMESPACE}
+type: Opaque
+data:
+  DBCLUSTER_NAME: "${DB_ADMIN_PASSWORD_BASE64}"
+---
+apiVersion: postgresql.dbadmin.gdc.goog/v1
+kind: DBCluster
+metadata:
+  name: ${DB_PSQL_CLUSTER_NAME}
+  namespace: ${NAMESPACE}
+spec:
+  primarySpec:
+    adminUser:
+      passwordRef:
+        name: db-pw-${DB_PSQL_CLUSTER_NAME}
+    version: "POSTGRESQL_13"
+    resources:
+      memory: 26Gi
+      cpu: 4
+      disks:
+      - name: DataDisk
+        size: 100Gi
