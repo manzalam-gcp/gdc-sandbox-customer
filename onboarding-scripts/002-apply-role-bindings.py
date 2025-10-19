@@ -71,20 +71,22 @@ def main():
                 else:
                     print(f"    - Failed to apply role '{role}'. Error: {result.stderr.strip()}")
 
-            org_roles_to_apply = role_sets.get(role_set_name, {}).get("orgRoles", [])
-            print(f"  - Applying org roles for user '{user_email}'...")
-            for role in org_roles_to_apply:
-                command = [
-                    "gdcloud", "organizations", "add-iam-policy-binding", org_id,
-                    f"--member=user:{user_email}",
-                    f"--role={role}"
-                ]
-                result = subprocess.run(command, capture_output=True, text=True, check=False)
+            # if org_id is provided, also apply org roles
+            if org_id:
+                org_roles_to_apply = role_sets.get(role_set_name, {}).get("orgRoles", [])
+                print(f"  - Applying org roles for user '{user_email}'...")
+                for role in org_roles_to_apply:
+                    command = [
+                        "gdcloud", "organizations", "add-iam-policy-binding", org_id,
+                        f"--member=user:{user_email}",
+                        f"--role={role}"
+                    ]
+                    result = subprocess.run(command, capture_output=True, text=True, check=False)
 
-                if result.returncode == 0:
-                    print(f"    - Successfully applied role '{role}'.")
-                else:
-                    print(f"    - Failed to apply role '{role}'. Error: {result.stderr.strip()}")
+                    if result.returncode == 0:
+                        print(f"    - Successfully applied role '{role}'.")
+                    else:
+                        print(f"    - Failed to apply role '{role}'. Error: {result.stderr.strip()}")
 
 if __name__ == "__main__":
     main()

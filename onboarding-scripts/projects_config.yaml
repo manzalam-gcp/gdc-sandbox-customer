@@ -23,6 +23,10 @@ projects:
       roleSetRef: roleSets/developer
     - user: fop-tackaberry@google.com
       roleSetRef: roleSets/viewer
+- name: user-project
+  users:
+    - user: fop-tackaberry@google.com
+      roleSetRef: roleSets/viewer
 roleSets:
   developer:
     roles:
