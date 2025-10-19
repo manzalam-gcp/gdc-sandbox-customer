@@ -11,7 +11,7 @@ def main():
     Main function to onboard projects.
     """
     # Assuming projects.yaml is in a config directory parallel to scripts
-    with open("../config/projects.yaml", "r", encoding="utf-8") as stream:
+    with open("./projects_config.yaml", "r", encoding="utf-8") as stream:
         try:
             data = yaml.safe_load(stream)
             if "projects" in data and data["projects"]:
