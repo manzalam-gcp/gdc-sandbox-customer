@@ -6,7 +6,7 @@ def main():
 
     print("🚀 Starting creation of ${#NEW_PROJECT_IDS[@]} GDC Projects...")
     print("--------------------------------------------------------")
-    
+
     """
     Main function to onboard projects.
     """
@@ -33,10 +33,6 @@ def main():
                                 "projects",
                                 "create",
                                 project_name,
-                                "--display-name",
-                                project.get("displayName", project_name),
-                                "--description",
-                                project.get("description", ""),
                             ]
                             create_result = subprocess.run(
                                 create_command, capture_output=True, text=True, check=False
