@@ -26,7 +26,7 @@ projects:
 - name: user-project
   users:
     - user: fop-tackaberry@google.com
-      roleSetRef: roleSets/viewer
+      roleSetRef: roleSets/harborUser
 roleSets:
   developer:
     roles:
@@ -52,4 +52,9 @@ roleSets:
   viewer:
     roles:
       - project-viewer
+  harborUser:
+    roles:
+      - project-viewer
+      - harbor-instance-viewer
+      - harbor-instance-admin
 
