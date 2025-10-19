@@ -5,12 +5,14 @@ import os
 
 def main():
 
-    print("🚀 Starting creation of ${#NEW_PROJECT_IDS[@]} GDC Projects...")
-    print("--------------------------------------------------------")
-
     """
     Main function to onboard projects.
     """
+    
+    print("🚀 Starting creation of ${#NEW_PROJECT_IDS[@]} GDC Projects...")
+    print("--------------------------------------------------------")
+
+
     # Construct the path to the config file, assuming it's in the same directory as the script.
     script_dir = os.path.dirname(os.path.abspath(__file__))
     config_path = os.path.join(script_dir, "projects_config.yaml")
