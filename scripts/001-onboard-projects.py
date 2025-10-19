@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import yaml
 import subprocess
+import os
 
 def main():
 
@@ -10,8 +11,11 @@ def main():
     """
     Main function to onboard projects.
     """
-    # Assuming projects.yaml is in a config directory parallel to scripts
-    with open("./projects_config.yaml", "r", encoding="utf-8") as stream:
+    # Construct the path to the config file, assuming it's in the same directory as the script.
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(script_dir, "projects_config.yaml")
+
+    with open(config_path, "r", encoding="utf-8") as stream:
         try:
             data = yaml.safe_load(stream)
             if "projects" in data and data["projects"]:
