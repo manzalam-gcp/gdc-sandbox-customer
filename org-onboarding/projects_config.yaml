@@ -1,7 +1,3 @@
-config: 
-  harbor:
-    instance: user-haas-instance
-    project: user-project
 projects:
 - name: tack-1
   orgId: org-1
@@ -26,7 +22,7 @@ projects:
     - user: fop-platform-admin@example.com
       roleSetRef: roleSets/developer
     - user: fop-tackaberry@google.com
-      roleSetRef: roleSets/viewer
+      roleSetRef: roleSets/developer
 - name: user-project
   users:
     - user: fop-tackaberry@google.com
