@@ -39,6 +39,7 @@ This script is a utility to help you connect to and manage files on your remote 
         *   `./sandbox.sh tunnel`: Starts a Google Cloud IAP tunnel, allowing you to connect to the remote instance via RDP on a local port.
         *   `./sandbox.sh ssh`: Uses `sshuttle` and IAP to create a secure VPN-like connection to the sandbox's internal network, allowing direct access to services.
         *   `./sandbox.sh env`: Copies your local `.env` file to the project directory on the remote sandbox.
+        *   `./sandbox.sh org-onboard`: Copies your local `projects_config.yaml` file to the project directory on the remote sandbox.
         *   `./sandbox.sh up <local_path>`: Recursively copies a local directory to the workspace on the remote sandbox.
         *   `./sandbox.sh cp <remote_path>`: Copies a file from the remote sandbox to your local machine.
 
@@ -118,62 +119,7 @@ This project includes a set of utility scripts to streamline common development 
     *   For `app` and `translate`, it builds a Docker image from the source code in their respective directories.
     *   For `open` and `elastic`, it pulls the required public images from their official registries.
 
-## Bootstrap
 
-The bootstrap process prepares the GDC Sandbox environment for application deployment. It involves a sequence of one-time setup scripts that create the necessary infrastructure and permissions. This includes setting up the primary workload project, configuring IAM roles for administrative access, and establishing baseline network policies for the Kubernetes cluster. These steps must be completed before deploying any applications.
-
-
-## `1-project`
-
-The `1-project.sh` step createst the main workload project.  Set `WORKLOAD_PROJECT` as the main workload project name. 
-
-This script uses a shared Harbor instance.  These are likely as follows: 
-
-```
-HARBOR_INSTANCE=user-haas-instance
-HARBOR_INSTANCE_PROJECT=user-project
-```
-
-NB. You will need to create a Harbor service account manually.  This will be used for `docker login` in the `login` script. 
-
-Set environment variables as follows:
-
-```
-HARBOR_PASSWORD=your-password
-HARBOR_USERNAME=your-username
-```
-
-The `2-database.sh` script is optional. This creates an AlloyDB instance and a PostgreSQL instance
-
-### Run
-
-```bash
-./bootstrap/1-project/1-project.sh
-./bootstrap/1-project/2-database.sh
-```
-
-## `2-iam`
-
-This step configures the necessary roles for the main platform admin user `PLATFORM_ADMIN="fop-platform-admin@example.com"`. 
-
-The roles added include all application devlopment roles. 
-
-### Run
-
-```bash
-./bootstrap/2-iam/1-roles.sh
-./bootstrap/2-iam/2-service-accounts.sh
-```
-
-## `3-network`
-
-This step configures wide-open ingress and egress to the k8s network.  This is configured for testing.
-
-### Run
-
-```bash
-deploy bootstrap
-```
 
 
 ## Testing and Debugging
@@ -296,15 +242,16 @@ source .env
 login
 # harbor login will fail
 
-./bootstrap/1-project/1-project.sh
-
-./bootstrap/2-iam/1-roles.sh 
-
-login
 
 # in console, attach project to user-vm-1
 
-deploy bootstrap
+1. Configure projects in `projects_config.yaml`.
+
+1. Run `./001-onbaord-projects.py`
+
+1. Run `./002-apply-role-bindings.yaml`
+
+1. In console, attach projects to user-vm-1.
 
 build app
 
