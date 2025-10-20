@@ -5,11 +5,11 @@
 
 ### Pre-requisites
 
-2. gLinux/wsl: Set up wsl/Linux on laptop. 
+1. gLinux/wsl: Set up wsl/Linux on laptop. 
 
-4. Review [GDC Sandbox Devleoper Guide](https://services.google.com/fh/files/misc/gdc_sandbox_developer_guide.pdf): This repo builds on the fundamentials and helps you get set up.  NB. Set up `gdcloud`. 
+2. Review [GDC Sandbox Devleoper Guide](https://services.google.com/fh/files/misc/gdc_sandbox_developer_guide.pdf): This repo builds on the fundamentials and helps you get set up.  NB. Set up `gdcloud`. 
 
-5. Github/ADO account. 
+3. Github/ADO account. 
 
 
 ### .env file
