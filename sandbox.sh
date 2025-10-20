@@ -23,7 +23,15 @@ if [ "$1" == "tunnel" ]; then
 fi
 
 if [ "$1" == "env" ]; then
-    response=$(gcloud compute scp .env $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/gdc-sandbox/.env \
+    response=$(gcloud compute scp .env $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/sandbox-customer/.env \
+        --tunnel-through-iap \
+        --project $SANDBOX_PROJECT \
+        --zone $SANDBOX_ZONE)
+    exit 0
+fi
+
+if [ "$1" == "org-onboard" ]; then
+    response=$(gcloud compute scp ./org-onboarding/projects_config.yaml $SANDBOX_USER@$SANDBOX_INSTANCE:/home/$SANDBOX_USER/sandbox-customer/org-onboarding/projects_config.yaml \
         --tunnel-through-iap \
         --project $SANDBOX_PROJECT \
         --zone $SANDBOX_ZONE)
