@@ -5,15 +5,11 @@
 
 ### Pre-requisites
 
-1. Cloudtop: You will need a Cloudtop environment to access urls on Sandbox public network. You can also use this to RDP into sandbox.
-
-2. gLinux: Set up gLinux on laptop. 
-
-3. Remmina: [Install Remmina](https://remmina.org/how-to-install-remmina/#ubuntu) for RDP access to Sandbox. 
+2. gLinux/wsl: Set up wsl/Linux on laptop. 
 
 4. Review [GDC Sandbox Devleoper Guide](https://services.google.com/fh/files/misc/gdc_sandbox_developer_guide.pdf): This repo builds on the fundamentials and helps you get set up.  NB. Set up `gdcloud`. 
 
-5. Gitlab account. 
+5. Github/ADO account. 
 
 
 ### .env file
@@ -252,12 +248,6 @@ login
 1. Run `./002-apply-role-bindings.yaml`
 
 1. In console, attach projects to user-vm-1.
-
-build app
-
-./bootstrap/1-project/3-harbor.sh
-
-deploy app
 
 
 ```
