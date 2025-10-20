@@ -11,7 +11,7 @@
 
 3. Remmina: [Install Remmina](https://remmina.org/how-to-install-remmina/#ubuntu) for RDP access to Sandbox. 
 
-4. Review [GDC Sandbox Devleoper Guide](https://services.google.com/fh/files/misc/gdc_sandbox_developer_guide.pdf): This repo builds on the fundamentials and helps you get set up.  NB. Set up `gdcloud`. 
+4. Review [GDC Sandbox Documentation](https://cloud.google.com/distributed-cloud/sandbox/latest) for fundamentals. 
 
 5. Gitlab account. 
 
