@@ -9,7 +9,15 @@
 
 2. Review [GDC Sandbox Devleoper Guide](https://services.google.com/fh/files/misc/gdc_sandbox_developer_guide.pdf): This repo builds on the fundamentials and helps you get set up.  NB. Set up `gdcloud`. 
 
+<<<<<<< HEAD
 3. Github/ADO account. 
+=======
+3. Remmina: [Install Remmina](https://remmina.org/how-to-install-remmina/#ubuntu) for RDP access to Sandbox. 
+
+4. Review [GDC Sandbox Documentation](https://cloud.google.com/distributed-cloud/sandbox/latest) for fundamentals. 
+
+5. Gitlab account. 
+>>>>>>> c598c3f06afed31bb64717ec5266c5ed013fd2da
 
 
 ### .env file
