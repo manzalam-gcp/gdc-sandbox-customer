@@ -18,7 +18,7 @@ spec:
         - 8.8.8.8
       containers:
       - name: translation-app
-        image: ${HARBOR_URL}/${HARBOR_PROJECT}/translate:latest
+        image: imagenameplaceholder
         imagePullPolicy: Always 
         ports:
         - containerPort: 8080
@@ -26,11 +26,11 @@ spec:
         - name: TRANSLATE_APP_API_KEY
           valueFrom:
             secretKeyRef:
-              name: translate-app
-              key: translate-app-api-key
+              name: app-secret-1
+              key: TRANSLATE_APP_API_KEY
 
       imagePullSecrets:
-      - name: ${HARBOR_SECRET}
+      - name: harbor-secret
 
 ---
 apiVersion: v1

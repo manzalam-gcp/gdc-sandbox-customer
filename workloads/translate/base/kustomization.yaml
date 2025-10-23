@@ -1,0 +1,31 @@
+namePrefix: translate-app--
+
+labels:
+- includeSelectors: true
+  pairs:
+    app-name: translate-app
+
+resources:
+- deployment.yaml
+
+configMapGenerator:
+- name: app-configmap-1
+  envs:
+  - app.properties
+
+secretGenerator:
+- name: app-secret-1
+  envs:
+  - app-secrets.properties
+
+replacements:
+- source:
+    kind: ConfigMap
+    name: app-configmap-1
+    fieldPath: data.IMAGE
+  targets:
+  - select:
+      kind: Deployment
+      name: translation-app
+    fieldPaths:
+    - spec.template.spec.containers.0.image

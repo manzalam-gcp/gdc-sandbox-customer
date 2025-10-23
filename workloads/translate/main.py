@@ -7,16 +7,15 @@ app = Flask(__name__)
 TRANSLATE_API_URL = 'https://translation.googleapis.com/language/translate/v2'
 TRANSLATE_APP_API_KEY = os.environ['TRANSLATE_APP_API_KEY']
 
-@app.route('/test', methods=['POST'])
-def test():
-
-    print(request)
-
-    return jsonify({"request":request.get_json()})
 
 @app.route('/', methods=['GET'])
 def home():
-    return jsonify({"message":"This is the translate app.`", "request":request.get_json()})
+    print(request.headers)
+    return jsonify({"_message":"This is the translate app.", 
+                    "request":{"headers":{"User-Agent":request.headers.get('User-Agent')},
+                                "args":request.args,
+                                "origin":request.remote_addr,
+                               }})
 
 
 @app.route('/translate', methods=['POST'])

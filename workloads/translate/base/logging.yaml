@@ -1,0 +1,12 @@
+# Configures a log scraping job
+apiVersion: logging.gdc.goog/v1
+kind: LoggingTarget
+metadata:
+  name: logging
+spec:
+  selector:
+    matchPodNames:
+      - translate-app--translation-app-service
+  parser: json
+  logAccessLevel: ao
+  serviceName: translate-app--translation-app-service
